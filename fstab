@@ -1,0 +1,15 @@
+# Static information about the filesystems.
+# See fstab(5) for details.
+
+# <file system> <dir> <type> <options> <dump> <pass>
+# /dev/sdb2
+UUID=f92c4e05-30f6-4882-bb36-30da76c61f10	/								ext4      	rw,relatime	0 1
+
+# /dev/sdb1
+UUID=93810d01-a7eb-481a-81b6-c906292517dc	/boot						ext4      	rw,relatime	0 2
+
+# /dev/sda1
+UUID=7de49e5f-8095-4288-9c94-c07a304ae554	/mnt/hdd				ext4				rw,relatime	0 1
+
+# /dev/sda2
+UUID=3cbf9d4f-af4e-42e4-9d36-063f13450d98	/mnt/hdd_home		ext4				rw,relatime 0 1

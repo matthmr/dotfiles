@@ -1,0 +1,8 @@
+[Unit]
+Description=Mount the HDD on startup, change keyboard layout, change keyboard rate
+
+[Service]
+ExecStart=/usr/bin/boot
+
+[Install]
+WantedBy=muilt-user.target

@@ -18,16 +18,17 @@
 
 # Browser:
 	- firefox
+	- midori
 
 # Window manager:
 	- dwm
 	- picom
 	- nitrogen
 
-# Shell
+# Shell:
 	- fish
 
-# Git server
+# Git server:
 	- git
 	- lazygit
 
@@ -37,5 +38,18 @@
 # Virtualization:
 	- virtualbox
 
+# Character Selection:
+	- kcharselect
+
+# Image editing:
+	- drawing
+
+# Compatibility layer:
+	- steam
+
+# Torrenting
+	- qbittorrent
+
 # Misc:
 	- pavucontrol
+	- obs

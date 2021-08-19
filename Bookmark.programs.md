@@ -43,9 +43,11 @@
 
 # Image editing:
 	- drawing
+	- gimp
 
 # Compatibility layer:
 	- steam
+	- wine
 
 # Torrenting
 	- qbittorrent

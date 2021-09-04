@@ -8,7 +8,10 @@
 	- code-oss				(/mnt)
 	- texmaker				(/mnt & /usr/share)
 	- xed							(/mnt & /usr/share [linked])
+
+# Renderers:
 	- typora					(local)
+	- okular					(/usr)
 
 # Terminals:
 	- st							(mostly local)
@@ -23,12 +26,15 @@
 
 # Browser:
 	- firefox					(/usr)
-	- midori					(/mnt & /usr/lib [linked])
+	- brave						(/usr [moved from Git/brave-bin])
 
 # Window manager:
-	- dwm							(mostly local)
-	- picom						(/usr)
-	- nitrogen				(/mnt)
+	- dwm											(mostly local)
+	- picom (jonaburg's fork)	(/usr)
+	- nitrogen								(/mnt)
+	- wmcrtl									(/mnt)
+	- xdotool									(/mnt & libxdo.so.3 linked)
+		* NOTE(mh): The two above are something I'm doing :TODO: Update this
 
 # Shell:
 	- fish						(/usr)
@@ -36,6 +42,7 @@
 # Git server:
 	- git							(/usr)
 	- lazygit					(/mnt)
+	- wit							(I made it :) )
 
 # Customizer:
 	- lxappearance		(/usr)
@@ -49,11 +56,14 @@
 # Image editing:
 	- drawing					(/usr)
 	- gimp						(/usr)
+	- kcolorchooser		(/mnt)
+
+# Audio editing:
+	- audacity				(/usr)
 
 # Compatibility layer:
 	- steam						(/usr)
 	- wine						(/usr & (/usr/lib /usr/lib32) [linked])
-<!--*TODO(mh): Analise wine libraries :: DONE(mh)-->
 
 # Torrenting:
 	- qbittorrent			(/mnt)
@@ -65,7 +75,9 @@
 	- ~anki
 
 # Settings Daemon:
-	- ~cinnamon-settings-daemon
+	- nvidia-settings		(/usr)
+	- xbindkeys\_config (/mnt)
+		* NOTE(mh): GUI config for xbindkeys utilising find_cursor (compiled from source)
 
 # Font Viewer:
 	- gtk2fontsel			(/mnt)
@@ -74,7 +86,13 @@
 	- screengrab			(/usr)
 
 # Application Launcher
-	- ~rofi
+	- rofi						(/mnt)
+
+# Cursor finder
+	- find-cursor			(strictly compiled)
+
+# Office Suite
+	- ~libreoffice
 
 # Misc:
 	- pavucontrol			(/usr)	

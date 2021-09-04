@@ -1,0 +1,7 @@
+#!/usr/bin/sh
+
+if [ $(xinput --list-props 8 | grep Left | awk '{ print $6 }' | head -1) == '1' ]; then
+	xinput --set-prop 8 'libinput Left Handed Enabled' 0
+else
+	xinput --set-prop 8 'libinput Left Handed Enabled' 1
+fi

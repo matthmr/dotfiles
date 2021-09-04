@@ -1,0 +1,128 @@
+#!/usr/bin/sh
+# Made by mH (https://www.github.com/observeofmath)
+
+EIGHT=8 # This will make sense, I promise
+
+# Check if the program exists
+if [ $(which $1) ]; then
+	echo "[LOG]: Program exists"
+else
+	echo "[LOG]: Program doesn't exist, exiting"
+	exit 404
+fi
+
+# Waits up to 2 minutes until the program starts
+# It does so in lots of 125ms
+DELAY=960
+
+# Gets current desktop (tag)
+DESK_STR='_NET_CURRENT_DESKTOP'
+SPAWN_DESK=$(($(xprop -root $DESK_STR | sed "s/$DESK_STR(CARDINAL) = //g")+1))
+
+# Sets the command to change desktop out
+function CHANGE_DESK(){
+  # $1 is the window id, aka a hex number
+  wmctrl -i -r $1 -t $(($SPAWN_DESK-1))
+}
+
+# Get a list of the wid of running processes
+function wlist() {
+  echo $(wmctrl -l | awk '{ print $1 }')
+}
+SPAWN_WIN_LIST=$(wlist)
+
+# Sends a simple sh executor to background
+$@ &
+
+# Loops every 125ms and checks if there are any new windows in the system
+for i in $(seq 1 $DELAY)
+do
+  echo $i
+  CURR_DESK=$(($(xprop -root $DESK_STR | sed -e "s/$DESK_STR(CARDINAL) = //g")+1))
+
+  # If not changed desktop ...
+  if [[ $SPAWN_DESK = $CURR_DESK ]]; then
+
+    echo "[LOG]: User is on the same desktop."
+
+    # ... and the window launched
+    if [[ $SPAWN_WIN_LIST != $(wlist) ]]; then
+      # do nothing & get out
+      echo "[LOG]: Launched window on the same desktop. Nothing had to be done."
+      exit 0
+    # The window didn't lauch yet
+    else
+      echo "[LOG]: Window didn't launch"
+    fi
+
+  # If changed desktop ...
+  else
+
+    echo "[LOG]: User changed desktop."
+
+    CURR_WIN_LIST=$(wlist)
+
+    # ... and the window launched
+    if [[ $SPAWN_WIN_LIST != $CURR_WIN_LIST ]]; then
+      # change the newly focused window to its spawned 
+
+      #*NOTE(mh): This assumes no other window will be spawned between this and the window being displayed
+      #*          because this actually changes any new spawned window to the SPAWAN_DESK desktop
+      #*          if you want to make it a little more fool proof go for it
+      DIFF_WIN=$(echo $CURR_WIN_LIST | awk '{ print $NF }')
+			echo $DIFF_WIN
+
+      CHANGE_DESK $DIFF_WIN
+      echo "[LOG]: Launched window on a different desktop. Changed it to the right one."
+
+			# Changes focus back to main window of the current tag ...
+			xdotool key 'alt+shift+F10' # Send an alternative but identical signal as ALT+ENTER, which changes to the main
+
+			# ...if on desktop
+			CURR_ACTIVE_WIN=$(echo "obase=16;ibase=10;$(xdotool getactivewindow)"|bc|tr A-Z a-z)
+				
+			CURR_ACTIVE_WIN_LEN=${#CURR_ACTIVE_WIN}
+			echo "Curr_active_win = $CURR_ACTIVE_WIN"
+			echo "Curr_active_win_len = $CURR_ACTIVE_WIN_LEN"
+
+			# A window id must have 4 bytes
+			if [[ $CURR_ACTIVE_WIN_LEN -lt $EIGHT ]]; then
+				case $CURR_ACTIVE_WIN_LEN in
+					# Assuming there will not be anything lower than 2 bytes
+					'4')
+						CURR_ACTIVE_WIN=$(echo "0x0000$CURR_ACTIVE_WIN")
+						;;
+					'5')
+						CURR_ACTIVE_WIN=$(echo "0x000$CURR_ACTIVE_WIN")
+						;;
+					'6')
+						CURR_ACTIVE_WIN=$(echo "0x00$CURR_ACTIVE_WIN")
+						;;
+					'7')
+						CURR_ACTIVE_WIN=$(echo "0x0$CURR_ACTIVE_WIN")
+						;;
+					'8')
+						;;
+					esac
+			fi
+
+			echo "Curr_active_win_len after case = $CURR_ACTIVE_WIN"
+
+			if [[ $CURR_ACTIVE_WIN == $DIFF_WIN ]]; then
+				echo "[LOG]: Alt+Enter was not sufficent. Sending alt+k"
+				xdotool key 'alt+k' # Sends ALT+K to the current desktop
+			fi
+
+			echo "[LOG]: Changed back to original tag"
+
+      exit 0
+    # The window didn't lauch yet
+    else
+      echo "[LOG]: Window didn't launch"
+    fi
+  fi
+  sleep 0.125
+done
+
+	echo "[LOG]: Loop didn't run. Nothing was done."
+exit 0

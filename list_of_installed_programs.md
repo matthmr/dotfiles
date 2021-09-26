@@ -4,44 +4,43 @@
 	- gparted					(/usr)
 
 # Text Editors:
-	- subl						(local)
+	- sublime					(local)
 	- code-oss				(/mnt)
 	- texmaker				(/mnt & /usr/share)
-	- xed							(/mnt & /usr/share [linked])
+	- kate						(/mnt)
 
-# Renderers:
-	- typora					(local)
-	- okular					(/usr)
+# Text Format File Renderers:
+	- typora (md)			(local)
+	- okular (pdf)		(/usr)
 
 # Terminals:
-	- st							(mostly local)
 	- alacritty				(/mnt)
 	- kitty						(/mnt)
 
-# Video player:
+# Video Player:
 	- vlc							(/usr)
 
-# Image renderer:
-	- ristretto				(/mnt)
+# Image Renderer:
+	- gwenview	 			(/mnt)
 
 # Browser:
-	- firefox					(/usr)
 	- brave						(/usr [moved from Git/brave-bin])
 
-# Window manager:
+# Window Manager:
 	- dwm											(mostly local)
 	- picom (jonaburg's fork)	(/usr)
 	- nitrogen								(/mnt)
 	- wmcrtl									(/mnt)
-	- xdotool									(/mnt & libxdo.so.3 linked)
-		* NOTE(mh): The two above are something I'm doing :TODO: Update this
+	- xdotool									(/usr)
 
 # Shell:
 	- fish						(/usr)
+	- zsh							(/mnt [link /lib, /etc & /usr/share)
 
-# Git server:
+# Git Server:
 	- git							(/usr)
 	- lazygit					(/mnt)
+	- sublime-merge   (/mnt)
 	- wit							(I made it :) )
 
 # Customizer:
@@ -53,15 +52,16 @@
 # Character Selection:
 	- kcharselect			(/mnt)
 
-# Image editing:
+# Image Editing:
 	- drawing					(/usr)
 	- gimp						(/usr)
 	- kcolorchooser		(/mnt)
+	- inkscape				(/usr)
 
-# Audio editing:
+# Audio Editing:
 	- audacity				(/usr)
 
-# Compatibility layer:
+# Compatibility Layer:
 	- steam						(/usr)
 	- wine						(/usr & (/usr/lib /usr/lib32) [linked])
 
@@ -69,10 +69,13 @@
 	- qbittorrent			(/mnt)
 
 # File Manager:
-	- nemo						(/mnt & /usr/lib & /usr/share)
+	- dolphin					(/usr)
+	- lf							(/mnt [cli])
 
 # Language Learning:
 	- ~anki
+	- tagainijisho			(compiled & very fucking linked (qt5 libs))
+		*NOTE.UPDATE(mh): When I updated the system @ 11-Sep-21 most of the linked libraries lost their link
 
 # Settings Daemon:
 	- nvidia-settings		(/usr)
@@ -82,17 +85,49 @@
 # Font Viewer:
 	- gtk2fontsel			(/mnt)
 
-# Screenshot
+# Screen Capture:
 	- screengrab			(/usr)
+	- peek						(/usr)
 
-# Application Launcher
+# Application Launcher:
 	- rofi						(/mnt)
 
-# Cursor finder
+# Cursor Finder:
 	- find-cursor			(strictly compiled)
 
-# Office Suite
+# Office Suite:
 	- ~libreoffice
+
+# Gaming:
+	- xboard					(/mnt & [/usr/share/games])
+	- gnuchess				(/usr)
+	- supertuxkart		(compiled)
+	- bf2							(wine)
+	- veloren					(local)
+	- ~0ad						(local ?)
+	- ~flightgear			(local ?)
+
+# Synthesis:
+	- ~espeak
+
+# Rooting:
+	- doas						(/usr)
+
+# Clipboard Management:
+	- xclip						(/mnt)
+
+# Iso Burning:
+	- etcher					(/mnt [linked])
+
+# Server-Side Software:
+	- inetutils				(/usr) [for ftp] *NOTE(mh): I took out the `vsftpd` package. Reinstated it before using this
+	- ~nmap
+	- openssh         (/usr)
+
+# C Debugger GUI Front-End:
+	- ~gdbgui
+		- pip
+			- pipx
 
 # Misc:
 	- pavucontrol			(/usr)	

@@ -1,0 +1,95 @@
+<!--*NOTE(mh): Changes made @ 25/08/21 01:14 AM-->
+
+# Disk Management:
+	- gparted					(/usr)
+
+# Text Editors:
+	- sublime					(local)
+	- code-oss				(/mnt)
+
+# Text Format File Renderers:
+	- typora (md)			(local)
+	- okular (pdf)		(/usr)
+
+# Terminals:
+	- kitty						(/mnt)
+
+# Video Player:
+	- vlc							(/usr)
+
+# Image Renderer:
+	- gwenview	 			(/mnt)
+
+# Browser:
+	- brave						(/usr [moved from Git/brave-bin])
+
+# Window Manager:
+	- dwm											(mostly local)
+	- picom (jonaburg's fork)	(/usr)
+	- nitrogen								(/mnt)
+
+# Shell:
+	- fish						(/usr)
+	- zsh							(/mnt [link /lib, /etc & /usr/share)
+
+# Git Server:
+	- git							(/usr)
+	- lazygit					(/mnt)
+	- sublime-merge   (/mnt)
+	- wit							(I made it :) )
+
+# Customizer:
+	- lxappearance		(/usr)
+
+# Virtualization:
+	- virtualbox			(/usr)
+
+# Character Selection:
+	- kcharselect			(/mnt)
+
+# Image Editing:
+	- drawing					(/usr)
+	- kcolorchooser		(/mnt)
+	- inkscape				(/usr)
+
+# Torrenting:
+	- qbittorrent			(/mnt)
+
+# File Manager:
+	- dolphin					(/usr)
+
+# Settings Daemon:
+	- nvidia-settings		(/usr)
+
+# Screen Capture:
+	- screengrab			(/usr)
+
+# Application Launcher:
+	- rofi						(/mnt)
+
+# Office Suite:
+	- libreoffice     (/mnt)
+
+# Gaming:
+	- xonotic					(local)
+
+# Rooting:
+	- doas						(/usr)
+
+# Iso Burning:
+	- etcher					(/mnt [linked])
+
+# Server-Side Software:
+	- openssh         (/usr)
+
+# C Debugger GUI Front-End:
+	- ~gdbgui
+		- ~pip
+			- ~pipx
+
+# Music Player
+	- spotify
+	- ~spotify-adblock
+
+# Misc:
+	- pavucontrol			(/usr)	

@@ -15,10 +15,12 @@
 	- kitty						(/mnt)
 
 # Video Player:
-	- vlc							(/usr)
+	- *vlc						(/usr)
+	- mpv							(/usr)
 
 # Image Renderer:
 	- gwenview	 			(/mnt)
+	- gimp						(/usr)
 
 # Browser:
 	- brave						(/usr [moved from Git/brave-bin])
@@ -43,6 +45,9 @@
 
 # Virtualization:
 	- virtualbox			(/usr)
+
+# Compatibility Layer:
+	- ~wine						(/usr)
 
 # Character Selection:
 	- kcharselect			(/mnt)
@@ -72,6 +77,7 @@
 
 # Gaming:
 	- xonotic					(local)
+	- supertuxkart		(local)
 
 # Rooting:
 	- doas						(/usr)
@@ -87,9 +93,39 @@
 		- ~pip
 			- ~pipx
 
+# Recording
+	- obs							(/usr)
+	- kdenlive				(appimage)
+
 # Music Player
 	- spotify
 	- ~spotify-adblock
 
+# Audio editor
+	- audacity				(/usr)
+
+# LaTeX Renderer
+	- ~texstudio			(/usr)
+
+# Key Mapping
+	- xbindkey				(/usr)
+	- xdotool					(/usr)
+	- xkbsel					(/usr)
+
+# Rush
+	- perl-tk					(/usr)
+	- slop						(/usr)
+	- lynx						(/usr)
+	- xmlstarlet			(/mnt)
+
+# Overlay
+	- screenkey				(/usr)
+
+# Debugger
+	- gdb							(/usr)
+
+# Compiler
+	- nasm						(/mnt)
+
 # Misc:
-	- pavucontrol			(/usr)	
+	- pavucontrol			(/usr)

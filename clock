@@ -1,7 +1,0 @@
-#!/bin/sh
-
-while true; do
-	# xsetroot -name "$(date | sed -e 's/-03/|/g')"
-	xsetroot -name "$(date +'%A %I:%M %p, %d/%m/%Y')"
-	sleep 60
-done

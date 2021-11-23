@@ -1,0 +1,42 @@
+# overrides
+alias ls='ls --color'
+alias grep='grep --color'
+alias lf='lf -single'
+alias emacs='emacs -nw'
+alias gdb='gdb --tui'
+alias ed='ed -p ":"'
+alias tmux='tmux -u'
+
+# simplifiers
+alias f="find"
+alias g="git"
+alias p="pacman"
+alias cs='clear'
+
+# alternatives ...
+alias m="mv -i -v"
+alias r="rm -I -v"
+alias c="cp -i -v"
+alias o="echo"
+alias b="bat -pp -n"
+alias ht="htop"
+
+# ... turning to overrides
+alias mv="mv -i -v"
+alias rm="rm -I -v"
+alias cp="cp -i -v"
+alias bat="bat -pp -n"
+
+# editor
+alias fe='vim $(fzf) $@'
+alias v="vim"
+alias e="vim"
+
+# plugins
+alias lc="exa -lh --icons --sort type"
+
+# local dev - scriptsd
+function unit {
+	local unit_path="/home/mh/scripts/unit/unit-$1"
+	$unit_path $flag || echo ERR: No unit $1
+}

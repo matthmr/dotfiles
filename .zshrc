@@ -2,13 +2,13 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/mnt/hdd_home/home/mh/.oh-my-zsh"
+export ZSH="/home/mh/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="tjkirch" # set by `omz`
+ZSH_THEME="lukerandall" # set by `omz`
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -45,8 +45,9 @@ ZSH_THEME="tjkirch" # set by `omz`
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
-# See https://github.com/ohmyzsh/ohmyzsh/issues/5765
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -70,8 +71,7 @@ ZSH_THEME="tjkirch" # set by `omz`
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions zsh-completions)
-autoload -U compinit && compinit
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -100,8 +100,32 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+# The following lines were added by compinstall
 
-# Aliases
-# Source from custom file
-source ~mh/.zshaliases
-bindkey "^U" backward-kill-line
+# zstyle ':completion:*' completer _complete _ignored _approximate
+# zstyle :compinstall filename '/home/mh/.zshrc'
+# 
+# autoload -Uz compinit
+# compinit
+# End of lines added by compinstall
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.zsh_history
+HISTSIZE=500
+SAVEHIST=500
+# End of lines configured by zsh-newuser-install
+
+# Normal zsh mode
+# bindkey -e
+
+# Vi mode
+bindkey -v
+
+bindkey ^U backward-kill-line
+source ~/.zshalias
+
+# Load plygins
+source /mnt/ssd/root/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /mnt/ssd/root/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Found command color fix to blue
+ZSH_HIGHLIGHT_STYLES[arg0]=fg=blue

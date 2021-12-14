@@ -6,6 +6,10 @@ alias emacs='emacs -nw'
 alias gdb='gdb --tui'
 alias ed='ed -p ":"'
 alias tmux='tmux -u'
+alias dvtm='dvtm -m ^a -M zsh'
+alias diff='diff --color -u'
+alias x='xargs'
+alias fd='fd | fzft'
 
 # simplifiers
 alias f="find"
@@ -14,29 +18,20 @@ alias p="pacman"
 alias cs='clear'
 
 # alternatives ...
-alias m="mv -i -v"
-alias r="rm -I -v"
-alias c="cp -i -v"
 alias o="echo"
-alias b="bat -pp -n"
-alias ht="htop"
+alias fzft='fzf-tmux'
 
 # ... turning to overrides
 alias mv="mv -i -v"
 alias rm="rm -I -v"
 alias cp="cp -i -v"
-alias bat="bat -pp -n"
+# alias bat="bat -pp -n"
 
 # editor
-alias fe='vim $(fzf) $@'
+alias fvim='vim $(fd)'
+alias ffvim='vim $(fzf)'
 alias v="vim"
 alias e="vim"
 
 # plugins
 alias lc="exa -lh --icons --sort type"
-
-# local dev - scriptsd
-function unit {
-	local unit_path="/home/mh/scripts/unit/unit-$1"
-	$unit_path $flag || echo ERR: No unit $1
-}

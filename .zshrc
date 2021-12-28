@@ -156,8 +156,8 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 # }}}
 
 # Load plugins
-source /mnt/ssd/root/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /mnt/ssd/root/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /home/mh/Source/sh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /home/mh/Source/sh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /home/mh/Source/sh/z
 
 # Found command color fix to blue

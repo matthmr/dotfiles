@@ -4,34 +4,38 @@ alias grep='grep --color'
 alias lf='lf -single'
 alias emacs='emacs -nw'
 alias gdb='gdb --tui'
-alias ed='ed -p ":"'
 alias tmux='tmux -u'
 alias dvtm='dvtm -m ^a -M zsh'
 alias diff='diff --color -u'
 alias x='xargs'
 alias fd='fd | fzft'
+alias xonotic='xonotic -basedir Games/Xonotic'
 
 # simplifiers
-alias f="find"
-alias g="git"
-alias p="pacman"
+alias f='find'
+alias g='git'
+alias p='pacman'
 alias cs='clear'
 
 # alternatives ...
-alias o="echo"
+alias o='echo'
 alias fzft='fzf-tmux'
+alias mk='make'
+alias lc='exa -lh --icons --sort type'
+alias lman='man -M ~/Drives/root/usr/share/man'
 
 # ... turning to overrides
-alias mv="mv -i -v"
-alias rm="rm -I -v"
-alias cp="cp -i -v"
-# alias bat="bat -pp -n"
+alias mv='mv -i -v'
+alias rm='rm -I -v'
+alias cp='cp -i -v'
 
 # editor
 alias fvim='vim $(fd)'
 alias ffvim='vim $(fzf)'
-alias v="vim"
-alias e="vim"
+alias v='vim'
+alias e='vim'
 
-# plugins
-alias lc="exa -lh --icons --sort type"
+# functions
+alias clean='echo "" > /home/mh/.zsh_history'
+alias reload='source /home/mh/.alias'
+alias lang='bat -l'

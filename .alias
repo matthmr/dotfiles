@@ -11,14 +11,7 @@ alias x='xargs'
 alias fd='fd | fzft'
 alias xonotic='xonotic -basedir Games/Xonotic'
 
-# simplifiers
-alias f='find'
-alias g='git'
-alias p='pacman'
-alias cs='clear'
-
 # alternatives ...
-alias o='echo'
 alias fzft='fzf-tmux'
 alias mk='make'
 alias lc='exa -lh --icons --sort type'
@@ -32,10 +25,31 @@ alias cp='cp -i -v'
 # editor
 alias fvim='vim $(fd)'
 alias ffvim='vim $(fzf)'
-alias v='vim'
-alias e='vim'
 
 # functions
 alias clean='echo "" > /home/mh/.zsh_history'
 alias reload='source /home/mh/.alias'
 alias lang='bat -l'
+alias wiki='vim /home/mh/Wiki/index.md'
+alias journal='vim /home/mh/Wiki/Journal/index.md'
+
+# function definition
+function cmdof {
+	[[ -z "$1" ]] &&
+		echo [ !! ] Argument required &&
+		return 1
+	PID=$(pidof $1)
+
+	[[ -z "$PID" ]] &&
+		echo [ !! ] No such process \'$1\' &&
+		return 1
+
+	NO=$(echo $PID | awk '{print NF}')
+
+	for (( i = 1; i <= $NO; i++ ))
+	do
+		pid=$(echo $PID | awk "{print \$$i}")
+		printf "pid $pid: command $(cat /proc/$pid/cmdline) "
+		printf "\n"
+	done
+}

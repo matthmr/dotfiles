@@ -1,10 +1,11 @@
 # /etc/profile
+
 # Set our umask
 umask 022
 
 # Append "$1" to $PATH when not already in.
 # This function API is accessible to scripts in /etc/profile.d
-function append_path () {
+append_path () {
     case ":$PATH:" in
         *:"$1":*)
             ;;
@@ -14,17 +15,14 @@ function append_path () {
 }
 
 # Append our default paths
-append_path '/usr/local/sbin'
-append_path '/usr/local/bin'
+# append_path '/usr/local/sbin'
+# append_path '/usr/local/bin'
 append_path '/usr/bin'
 
-# Appended to include HDD-installed software
-append_path '/mnt/hdd/hdd_bin'
-append_path '/mnt/hdd/hdd_bin/usr/bin'
-# append_path '/mnt/hdd'
-
-# Load the moved home directory
-# HOME="/mnt/hdd_home/home/mh"
+# Append our custom paths
+append_path '/mnt/ssd/root/bin'
+append_path '/mnt/ssd/root/source/bin'
+append_path '/home/mh/Source/bin'
 
 # Force PATH to be environment
 export PATH
@@ -38,8 +36,7 @@ if test -d /etc/profile.d/; then
 fi
 
 # Unload our profile API functions
-# You know what? No. I want this. (Uncomment if you don't)
-# unset -f append_path
+unset -f append_path
 
 # Source global bash config, when interactive but not posix or sh mode
 if test "$BASH" &&\
@@ -57,5 +54,13 @@ unset TERMCAP
 # Man is much better than us at figuring this out
 unset MANPATH
 
-# Please fucking kill me
-startx
+# Sets qt5ct variable
+export QT_QPA_PLATFORMTHEME=qt5ct 
+
+# Clipmenu daemon
+export CM_SELECTIONS="clipboard"
+export CM_MAX_CLIPS=5
+export CM_LAUNCHER="rofi"
+
+# Editor fix
+export EDITOR=vim

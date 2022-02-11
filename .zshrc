@@ -8,7 +8,7 @@ export ZSH="/home/mh/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster" # set by `omz`
+ZSH_THEME="darkblood" # set by `omz`
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -186,5 +186,10 @@ source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
 bindkey '^F' fzf-history-widget
+
+# Less fix
+export LESS='-R --mouse'
+
+# theme fix
 
 ### MH'S CONFIG END ###

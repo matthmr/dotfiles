@@ -23,22 +23,28 @@
   # available, otherwise `xterm-256color` is used.
   #TERM: alacritty
 
-#window:
-background_opacity: 0.85
+window:
+  opacity: 0.6
+
+padding:
+  x: 6
+  y: 6
+
+dynamic_padding: false
 
 font:
   # Normal (roman) font face
   normal:
     # Font family
     #
-    # Default:
+    # Default: 0
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: "Source Code Pro"
+    family: "FiraCode"
 
     # The `style` can be specified to pick a specific face.
-    style: Regular
+    style: Medium
 
   # Bold font face
   bold:
@@ -46,7 +52,7 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: "Source Code Pro"
+    family: "FiraCode"
 
     # The `style` can be specified to pick a specific face.
     style: Bold
@@ -57,7 +63,7 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: "Source Code Pro"
+    family: "FiraCode"
 
     # The `style` can be specified to pick a specific face.
     style: Italic
@@ -68,13 +74,13 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: "Source Code Pro"
+    family: "FiraCode"
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
 
   # Point size
-  #size: 11.0
+  size: 13.5
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -103,8 +109,9 @@ font:
 colors:
   # Default colors
   primary:
-    background: '#1d1f21'
-    foreground: '#c5c8c6'
+    #background: '#1d1f21'
+    background: '#262626'
+    foreground: '#eeeeee'
 
     # Bright and dim foreground colors
     #
@@ -310,7 +317,7 @@ cursor:
     #   - Off: Disable blinking by default
     #   - On: Enable blinking by default
     #   - Always: Force the cursor to always blink
-    blinking: On
+    blinking: Always
 
   # Vi mode cursor style
   #
@@ -345,7 +352,7 @@ cursor:
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
-  program: /bin/fish
+  program: /bin/zsh
   args:
     - --login
 
@@ -358,7 +365,8 @@ shell:
 # Send ESC (\x1b) before characters when alt is pressed.
 #alt_send_esc: true
 
-#mouse:
+mouse:
+  hide_when_typing: true
   # Click settings
   #
   # The `double_click` and `triple_click` settings control the time

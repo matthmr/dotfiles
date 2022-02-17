@@ -22,6 +22,7 @@ alias pman='sudo pacman -S '
 alias mv='mv -i -v'
 alias rm='rm -I -v'
 alias cp='cp -i -v'
+alias ln='ln -i -v'
 
 # editor
 alias fvim='vim $(fd)'
@@ -34,6 +35,7 @@ alias lang='bat -l'
 alias wiki='vim /home/mh/Wiki/index.md'
 alias journal='vim /home/mh/Wiki/Journal/index.md'
 alias exst='echo $?'
+alias gget='doas cat ~mh/.github | xclip -selection clipboard'
 
 # function definition
 function cmdof {

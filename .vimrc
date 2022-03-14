@@ -287,7 +287,7 @@ nnoremap <leader>K i<CR><ESC>
 xnoremap <leader>K i<CR><ESC>
 
 " rainbow
-au FileType c,cpp,python,sh,rust,javascript,json,sdlang call rainbow#load()
+au FileType c,cpp,python,sh,rust,javascript,json call rainbow#load()
 
 " case insensitive search
 set wildignorecase
@@ -395,7 +395,8 @@ nnoremap <leader>hm :resize -10<CR>
 let g:gruvbox_contrast_dark = 'hard'
 
 " fold fix
-set foldmethod=manual
+" set foldmethod=manual
+set foldmethod=syntax
 
 " set only
 nnoremap <leader><C-s>o :only!<CR>
@@ -420,3 +421,7 @@ inoremap <C-o> <C-x><C-o>
 
 " terminal
 tnoremap <C-[> <C-\><C-n>
+
+" visual mode pasting
+xnoremap <expr> p 'pgv"'.v:register.'y`>'
+xnoremap <expr> P 'Pgv"'.v:register.'y`>'

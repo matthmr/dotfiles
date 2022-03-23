@@ -164,14 +164,8 @@ source /home/mh/Source/sh/z
 ZSH_HIGHLIGHT_STYLES[arg0]=fg=blue
 
 # export environment variables
-export EDITOR=/usr/bin/vim
-export VISUAL=/usr/bin/vim
-
-# vi mode hack
-
-# Init script
-# task
-colorscript.sh random
+export EDITOR=/usr/bin/nvim
+export VISUAL=/usr/bin/nvim
 
 bindkey -M vicmd '?' history-incremental-search-forward
 bindkey -M vicmd '/' history-incremental-search-backward
@@ -184,12 +178,15 @@ export FZF_DEFAULT_OPTS='--no-height --no-reverse'
 export FZF_TMUX=1
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
+FPATH=$FPATH:/mnt/ssd/root/usr/share/zsh/site-functions/
 
 bindkey '^F' fzf-history-widget
 
 # Less fix
-export LESS='-R --mouse'
+export LESS='--RAW-CONTROL-CHARS --mouse'
+# limit coredumpsize 50m
 
-# theme fix
+# Init script
+colorscript.sh random
 
 ### MH'S CONFIG END ###

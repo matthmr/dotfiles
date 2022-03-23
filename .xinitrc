@@ -1,61 +1,38 @@
-#!/bin/sh
+### DEPRECATED ###
+# xrandr --setprovideroutputsource modesetting NVIDIA-0
 
-userresources=$HOME/.Xresources
-usermodmap=$HOME/.Xmodmap
-sysresources=/etc/X11/xinit/.Xresources
-sysmodmap=/etc/X11/xinit/.Xmodmap
+### XINPUT CONFIGS ###
+xset r rate 220 25
+xkbset ma 60 10 10 5 2
+xrdb /home/mh/.Xresources
+# xinput --set-prop 11 'libinput Left Handed Enabled' 1
 
-# merge in defaults and keymaps
+### DAEMONS ###
+# [-z `pidof xbindkeys` ] && xbindkeys &
+# [ -z `pidof picom` ] && picom &
+[ -z `pidof nitrogen` ] && nitrogen --restore &
 
-if [ -f $sysresources ]; then
+BASH=`pidof bash`
 
+if [ -z $BASH ]; then
+	clock &
+else
 
-
-
-
-
-
-    xrdb -merge $sysresources
-
+	ZOMBIE_SLEEP_PID=`pgrep sleep --list-full | grep 'sleep 90' | cut -f 1 -d ' '`
+	[ ! -z $ZOMBIE_SLEEP_PID ] && kill -KILL $ZOMBIE_SLEEP_PID
+	
+	clock &
 fi
 
-if [ -f $sysmodmap ]; then
-    xmodmap $sysmodmap
+[ -z `pidof clipmenud` ] && clipmenud &
+
+### WINDOW MANAGER ###
+if [[ $WM = 'dwm' ]]
+then
+	exec dwm
+elif [[ $WM = 'awesome' ]]
+	exec awesome
+else
+	# fallback
+	exec twm
 fi
-
-if [ -f "$userresources" ]; then
-
-
-
-
-
-
-
-    xrdb -merge "$userresources"
-
-fi
-
-if [ -f "$usermodmap" ]; then
-    xmodmap "$usermodmap"
-fi
-
-# start some nice programs
-
-if [ -d /etc/X11/xinit/xinitrc.d ] ; then
- for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
-  [ -x "$f" ] && . "$f"
- done
- unset f
-fi
-
-xset r rate 200 25
-
-# Maybe uncomment this??
-nitrogen --restore &
-picom &
-exec dwm
-
-# I'am assuming this runs as soons as startx runs...
-# Comment if stuff breaks
-# setxkbmap br
-# loadkeys br-abnt2 || echo "fcking error"

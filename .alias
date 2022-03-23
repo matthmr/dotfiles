@@ -4,19 +4,20 @@ alias grep='grep --color'
 alias lf='lf -single'
 alias emacs='emacs -nw'
 alias gdb='gdb --tui'
+alias ggdb='/bin/gdb'
 alias tmux='tmux -u'
 alias dvtm='dvtm -m ^a -M zsh'
 alias diff='diff --color -u'
+alias patch='patch -u'
 alias x='xargs'
 alias fd='fd | fzft'
-alias xonotic='xonotic -basedir Games/Xonotic'
+alias xonotic='xonotic -basedir /home/mh/Games/Xonotic'
 
 # alternatives ...
 alias fzft='fzf-tmux'
 alias mk='make'
-alias lc='exa -lh --icons --sort type'
-alias lman='man -M ~/Drives/root/usr/share/man'
-alias pman='sudo pacman -S '
+alias l='exa -l -g --icons --sort type'
+alias localman='man -M ~/Drives/root/usr/share/man'
 
 # ... turning to overrides
 alias mv='mv -i -v'
@@ -25,39 +26,23 @@ alias cp='cp -i -v'
 alias ln='ln -i -v'
 
 # editor
-alias fvim='vim $(fd)'
-alias ffvim='vim $(fzf)'
+alias nv='nvim'
+alias nvi='nvim'
+alias vim='nvim'
+alias gvim='/bin/vim'
 
 # functions
+alias xc='xclip -selection clipboard'
 alias clean='echo "" > /home/mh/.zsh_history'
 alias reload='source /home/mh/.alias'
+alias nvmpv='mpv --no-video'
 alias lang='bat -l'
-alias wiki='vim /home/mh/Wiki/index.md'
-alias journal='vim /home/mh/Wiki/Journal/index.md'
-alias exst='echo $?'
-alias gget='doas cat ~mh/.github | xclip -selection clipboard'
+alias wiki='nvim /home/mh/Wiki/index.md'
+alias journal='nvim /home/mh/Wiki/Journal/index.md'
+alias gget='doas cat ~mh/.github | xc'
+alias gitfetch='onefetch'
 
 # function definition
-function cmdof {
-	[[ -z "$1" ]] &&
-		echo [ !! ] Argument required &&
-		return 1
-	PID=$(pidof $1)
-
-	[[ -z "$PID" ]] &&
-		echo [ !! ] No such process \'$1\' &&
-		return 1
-
-	NO=$(echo $PID | awk '{print NF}')
-
-	for (( i = 1; i <= $NO; i++ ))
-	do
-		pid=$(echo $PID | awk "{print \$$i}")
-		printf "pid $pid: command $(cat /proc/$pid/cmdline) "
-		printf "\n"
-	done
-}
-
 function unitf {
 	echo -- UNIT $2 --
 	echo -------------
@@ -67,17 +52,7 @@ function unitf {
 	echo -------------
 }
 
-function core {
-	CORES=$(/bin/ls -1 /home/mh/Analysis/Core)
-	while read core; do
-		date=$(date -d @$(echo $core | cut -d- -f2 | cut -d. -f1 ) +%d-%b-%g)
-		/bin/mv /home/mh/Analysis/Core/$core /home/mh/Analysis/Core/$(echo $core | cut -d- -f1)-$date.core
-		echo [ OK ] Done!!
-	done <<< $(echo -e "$CORES")
-}
-
-function cmd {
-	pushd /home/mh/.wine/dosdevices/c:/users/mh/Desktop
-	wine /home/mh/C:/windows/system32/cmd.exe
-	popd
+function unix2date {
+	unix=$1
+	date -d @${unix}
 }

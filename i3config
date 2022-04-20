@@ -14,7 +14,6 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:JetBrains Mono 12
-# font pango:monospace 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -47,16 +46,10 @@ floating_modifier $mod
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec "urxvt -e tmux new -A"
+#bindsym $mod+Return exec "urxvt -e tmux new -A"
 
 # kill focused window
 bindsym $mod+q kill
-
-# start dmenu (a program launcher)
-bindsym $mod+p exec --no-startup-id dmenu_run
-
-# start clipmenu (a clipboard manager)
-bindsym $mod+c exec --no-startup-id clipmenu
 
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
@@ -70,23 +63,11 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+h move left 15 px
+bindsym $mod+Shift+j move down 15 px
+bindsym $mod+Shift+k move up 15 px
+bindsym $mod+Shift+l move right 15 px
 
 # split in horizontal orientation
 bindsym $mod+Control+l split h
@@ -112,7 +93,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+d focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -137,11 +118,11 @@ bindsym $mod+Shift+4 move container to workspace number $ws4
 bindsym $mod+Shift+5 move container to workspace number $ws5
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+#bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+#bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -151,16 +132,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 15 px or 15 ppt
+        bindsym j resize grow height 15 px or 15 ppt
+        bindsym k resize shrink height 15 px or 15 ppt
+        bindsym l resize grow width 15 px or 15 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -171,6 +146,12 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 ### MH'S CONFIG START ###
+
+bindsym $mod+Control+m move position mouse
+bindsym $mod+Control+c move absolute position center
+
+bindsym $mod+p exec --no-startup-id dmenu_run
+bindsym $mod+c exec --no-startup-id clipmenu
 
 focus_follows_mouse no
 
@@ -183,12 +164,12 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #ffffff
 
-gaps inner 0
+gaps inner 10
 gaps outer 0
 
 mode "gap" {
-  bindsym p gaps inner all plus 10
-  bindsym m gaps inner all minus 10
+  bindsym p gaps inner all plus 5
+  bindsym m gaps inner all minus 5
 
   bindsym Return mode "default"
   bindsym Escape mode "default"
@@ -200,6 +181,65 @@ bindsym $mod+g mode "gap"
 # default_border pixel 2
 default_border normal 2
 
+workspace_layout tabbed
+
+bindsym $mod+Control+s move scratchpad
+bindsym $mod+Control+d scratchpad show
+
+for_window [all] title_window_icon on
+
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
+
+mode "term" {
+  # start these terminals with a new tmux instance ...
+  bindsym a exec "alacritty --command tmux-attach"
+  bindsym u exec "urxvt -e            tmux-attach"
+  bindsym x exec "xterm               tmux-attach"
+  bindsym s exec "st                  tmux-attach"
+
+  # ... or normally
+  bindsym Shift+a exec "alacritty"
+  bindsym Shift+u exec "urxvt"
+  bindsym Shift+x exec "xterm"
+  bindsym Shift+s exec "st"
+
+  # plus brave because why not
+  bindsym b exec "brave https://www.google.com"
+  bindsym Shift+b exec "brave"
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+Return mode "default"
+}
+
+bindsym $mod+Return mode "term"
+
+mode "action" {
+  # system
+  bindsym Shift+p exec "doas openrc-shutdown -p now"
+  bindsym Shift+r exec "doas openrc-shutdown -r now"
+  bindsym Shift+s exec "loginctl suspend"
+  bindsym Shift+h exec "loginctl hibernate"
+  bindsym Shift+l exec "i3lock -i /home/mh/Images/Wallpapers/retrogroove.png -b -n -p win -f"
+
+  # i3
+  bindsym q exec "i3-msg exit"
+  bindsym c reload
+  bindsym r restart
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+Shift+a mode "default"
+}
+
+bindsym $mod+Control+a mode "action"
+
+bindsym $mod+m mark swapee
+bindsym $mod+Shift+m unmark swapee
+bindsym $mod+n swap container with mark swapee
+
+### TODO: set up mark swapping
 ### MH'S CONFIG END ###
 
 # Start i3bar to display a workspace bar (plus the system information i3status

@@ -1,8 +1,9 @@
+setopt autocd autopushd
+set -k
+
 PROMPT='%F{red}┌[%F{reset}%B%n%b%F{red}@%F{reset}%B%m%b%F{red}] %F{red}[%F{reset}%B%l%b%F{red}] %F{red}[%F{reset}%B%t%b%F{red}] %(?..[%F{reset}%B%?%b%F{red}])
 └[%F{reset}%B%2~%b%F{red}]>%F{reset} '
 PS2=' %F{red}|>%F{reset} '
-
-set -k
 
 autoload -U compinit
 compinit
@@ -21,10 +22,8 @@ zmodload zsh/complist
 
 bindkey ^U backward-kill-line
 bindkey ^K kill-line
-source  '/home/mh/.alias'
 
 # vi mode ricing {{{
-export KEYTIMEOUT=1
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
@@ -58,16 +57,11 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 # }}}
 
 # Load plugins
-source /home/mh/Source/sh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /home/mh/Source/sh/zsh-autosuggestions/zsh-autosuggestions.zsh
-# source /home/mh/Source/sh/z
+source /home/mh/Git/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+source /home/mh/Git/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
 
 # Found command color fix to blue
 ZSH_HIGHLIGHT_STYLES[arg0]=fg=blue
-
-# export environment variables
-export EDITOR=/usr/bin/nvim
-export VISUAL=/usr/bin/nvim
 
 bindkey -M vicmd '?' history-incremental-search-forward
 bindkey -M vicmd '/' history-incremental-search-backward
@@ -75,19 +69,17 @@ bindkey "^P" history-incremental-pattern-search-backward
 bindkey "^N" history-incremental-pattern-search-forward
 
 # Fzf's config
-export FZF_DEFAULT_OPTS='--no-height --no-reverse'
-export FZF_TMUX=1
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
-FPATH=$FPATH:/mnt/ssd/root/usr/share/zsh/site-functions/
+FPATH=$FPATH:/home/mh/.local/share/zsh/site_functions
 
 bindkey '^F' fzf-history-widget
 
-# Less fix
-export LESS='--RAW-CONTROL-CHARS --mouse'
-# limit coredumpsize 50m
-
-# Init script
-colorscript.sh random
+# Source local shell-like scripts
+source /home/mh/Scripts/sh/alias
+source /home/mh/Scripts/sh/functions
 
 ### MH'S CONFIG END ###
+
+# Color script
+colorscript.sh random

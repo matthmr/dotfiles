@@ -100,14 +100,14 @@ default partial xkb_compatibility "mousekeys" {
 	action = PointerButton(button=default,count=2);
     };
 
-    interpret KP_0 {
+    interpret Tab {
 	action = LockPointerButton(button=default,affect=lock);
     };
     interpret KP_Insert {
 	action = LockPointerButton(button=default,affect=lock);
     };
 
-    interpret KP_Decimal {
+    interpret ISO_Left_Tab {
 	action = LockPointerButton(button=default,affect=unlock);
     };
     interpret KP_Delete {
@@ -193,7 +193,7 @@ default partial xkb_compatibility "mousekeys" {
     };
 
     // Allow an indicator for MouseKeys.
-    indicator "Mouse Keys" {
+    indicator "Num Lock" {
         //!allowExplicit;
 	indicatorDrivesKeyboard;
 	controls= MouseKeys;

@@ -79,6 +79,8 @@ bindkey '^F' fzf-history-widget
 source /home/mh/Scripts/sh/alias
 source /home/mh/Scripts/sh/functions
 
+export SHELL=/bin/zsh
+
 ### MH'S CONFIG END ###
 
 # Color script

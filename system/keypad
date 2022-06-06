@@ -570,7 +570,7 @@ xkb_symbols "atm" {
 
 partial modifier_keys
 xkb_symbols "pointerkeys" {
-    key <BKSP> { [ Backspace, Pointer_EnableKeys ] };
+    key <RTSH> { [ Shift_R, Pointer_EnableKeys ] };
 };
 
 

@@ -65,6 +65,13 @@ default partial xkb_compatibility "mousekeys" {
 	action = MovePtr(x=+1,y=-1);
     };
 
+    interpret p {
+        action = PointerButton(button=4, count=3);
+    };
+    interpret n {
+        action = PointerButton(button=5, count=3);
+    };
+
     interpret space {
 	action = PointerButton(button=default);
     };
@@ -194,7 +201,6 @@ default partial xkb_compatibility "mousekeys" {
 
     // Allow an indicator for MouseKeys.
     indicator "Num Lock" {
-        //!allowExplicit;
 	indicatorDrivesKeyboard;
 	controls= MouseKeys;
     };
